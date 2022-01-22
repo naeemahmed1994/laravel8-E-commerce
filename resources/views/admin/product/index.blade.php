@@ -55,6 +55,7 @@
                     <th>Product Name</th>
                     <th>Product Category</th>
                     <th>Product Regular Price</th>
+                    <th>Operator</th>
                     <th>Status</th>
                     <th>Date</th>
                     <th>Action</th>
@@ -66,11 +67,13 @@
                   <tr>
                     <td>{{$i++}}</td>
                     <td>{{$product->product_name}}</td>
-                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->category->category_name}}</td>
                     <td>{{$product->regular_price}}</td>
+                    <td>{{$product->user->name}}</td>
                     <td>{{$product->status ==1? 'Active': 'Inactive'}}</td>
                     <td>{{date('d-m-Y', strtotime($product->created_at))}}</td>
                     <td>
+                        <a href="{{url('product/'.$product->id)}}" class="btn btn-xs btn-primary">Details</a>
                         <a href="{{url('edit-brands/'.$product->id)}}" class="btn btn-xs btn-info">Edit</a>
                         <a href="{{url('delete-brands/'.$product->id)}}" class="btn btn-xs btn-danger">Delete</a>
                     </td>
@@ -79,13 +82,16 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                  <th>SI.</th>
+                    <th>SI.</th>
                     <th>Product Name</th>
                     <th>Product Category</th>
                     <th>Product Regular Price</th>
+                    <th>Operator</th>
                     <th>Status</th>
                     <th>Date</th>
                     <th>Action</th>
+
+
                   </tr>
                   </tfoot>
                 </table>

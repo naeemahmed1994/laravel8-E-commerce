@@ -36,7 +36,7 @@
           <h3 class="card-title">Product Entry</h3>
 
           <div class="card-tools">
-            <a type="button" href="{{url('/slider')}}" class="btn btn-primary btn-xs">
+            <a type="button" href="{{url('/products')}}" class="btn btn-primary btn-xs">
               <i class="fas fa-plus"></i> List
             </a>
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -92,18 +92,26 @@
                     <textarea class="form-control" name="tags" placeholder="Enter Product Tags ">
                     </textarea>
                   </div>
-                  <!-- <div class="form-group">
-                    <label>Slider Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="image_path">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
+                  <div class="form-group input_fields_wrap">
+                    <button class="add_field_button btn btn-primary mb-2">Add More Fields</button>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <input type="file" class="form-control" name="image[]">
+                        </div>
+                        <div class="col-4">
+                            <select class="form-control" name="image_type[]">
+                                <option>Select Type</option>
+                                <option value="big">Big</option>
+                                <option value="thumb">Thumb</option>
+                            </select>
+                        </div>
                     </div>
-                  </div> -->
+                    <div>
+                    <!-- <input type="text" class="form-control" name="mytext[1]">
+                    <input type="date" class="form-control" name="mydate[1]">
+                    <select name="myselect[1]"><option>Please Select</option></select> -->
+                    </div>
+                  </div>
                   <div class="form-group">
                   <label>Status</label>
                     <select name="status" class="form-control">
@@ -133,4 +141,26 @@
     <!-- /.content -->
   </div>
 
+@endsection
+@section('extra_js')
+<script>
+    $(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div class="form-row"><div class="col-4"><input type="file" class="form-control" name="image[]"></div><div class="col-4">  <select name="image_type[]" class="form-control"> <option>Select Type</option><option value="big">Big</option><option value="thumb">Thumb</option></select></div> <a href="#" class="remove_field">Remove</a></div> </div>'); // add input boxes.
+        }
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
 @endsection
