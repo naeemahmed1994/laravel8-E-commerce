@@ -19,16 +19,7 @@
 					</li>
 
                     @endforeach
-					<li>
-						<img src="{{asset('/')}}public/img/h4-slide.png" alt="Slide">
-						<div class="caption-group">
-							<h2 class="caption title">
-								iPhone <span class="primary">6 <strong>Plus</strong></span>
-							</h2>
-							<h4 class="caption subtitle">Dual SIM</h4>
-							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
-						</div>
-					</li>
+
 
 
 
@@ -81,19 +72,31 @@
                         <div class="product-carousel">
                             @foreach ($products as $product)
 
+
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="{{asset('/')}}public/img/product-1.jpg" alt="">
+                                    @foreach ($product->productImage as $image)
+                                        @if ($image->image_type == "big")
+                                            <img src="{{asset($image->image)}}" alt="">
+                                        @endif
+
+                                    @endforeach
+
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('/product/'.$product->id.'/'.$product->product_name)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
                                 <h2><a href="single-product.html">{{$product->product_name}}</a></h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>Tk. {{$product->discount_price}}</ins> <del>Tk. {{$product->regular_price}}</del>
+                                    @if ($product->discount_price)
+                                        <ins>Tk. {{$product->discount_price}}</ins> <del>Tk. {{$product->regular_price}}</del>
+                                    @else
+                                        <ins>Tk. {{$product->regular_price}}</ins>
+                                    @endif
+
                                 </div>
                             </div>
 
@@ -116,7 +119,7 @@
                         <div class="brand-list">
                             @foreach ($brands as $brand)
 
-                            <img src="{{asset($brand->image_path)}}" alt="">
+                            <a href="{{url('/brand/'.$brand->id)}}"><img src="{{asset($brand->image_path)}}" alt=""></a>
 
                             @endforeach
 
@@ -134,50 +137,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top Sellers</h2>
+                        <h2 class="product-wid-title">Categories</h2>
                         <a href="" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('/')}}public/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+
+                        @foreach ($categories as $category)
+                            <div class="single-wid-product">
+                                <h2><a href="{{url('/category/'.$category->id)}}">{{$category->category_name}}</a></h2>
                             </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('/')}}public/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('/')}}public/img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
                 <div class="col-md-4">

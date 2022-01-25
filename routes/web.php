@@ -22,9 +22,13 @@ use App\Models\Brand;
 
 Route::get('/',[TestController::class,'home']);
 Route::get('/shop',[TestController::class,'shop']);
-Route::get('/product',[TestController::class,'product']);
+Route::get('/product/{id}/{name}',[TestController::class,'product']);
 Route::get('/chart',[TestController::class,'chart']);
 Route::get('/checkout',[TestController::class,'checkout']);
+Route::get('/brand/{id}',[TestController::class,'brand']);
+Route::get('/category/{id}',[TestController::class,'category']);
+
+
 //for contact in contactcontroller
 Route::get('/contact',[ContactController::class,'index']);
 Route::post('/create-contact',[ContactController::class,'createContact']);

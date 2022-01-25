@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Shop</h2>
+                        <h2>{{$brand->brand_name}}</h2>
                     </div>
                 </div>
             </div>
@@ -26,6 +26,7 @@
                             @if ($image->image_type == "big")
                                 <img src="{{asset($image->image)}}" alt="">
                             @endif
+
                         @endforeach
                         </div>
                         <h2><a href="">{{$product->product_name}}</a></h2>
