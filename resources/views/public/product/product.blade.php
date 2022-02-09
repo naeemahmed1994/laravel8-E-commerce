@@ -85,6 +85,7 @@
                                     <div class="product-main-img">
                                     @foreach ($product->productImage as $image)
                                         @if ($image->image_type == "big")
+                                        @php($img = $image->image)
                                             <img src="{{asset($image->image)}}" alt="">
                                         @endif
                                     @endforeach
@@ -111,9 +112,14 @@
                                     @endif
                                     </div>
 
-                                    <form action="" class="cart">
+                                    <form action="{{url('/add-to-cart')}}" method="post" class="cart">
+                                        @csrf
                                         <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1">
+                                            <input type="hidden" title="Qty" value="{{$product->id}}" name="product_id">
+                                            <input type="hidden" title="Qty" value="{{$product->product_name}}" name="product_name">
+                                            <input type="hidden" title="Qty" value="{{$img}}" name="product_image">
+                                            <input type="hidden" title="Qty" value=" @if ($product->discount_price){{$product->discount_price}}@else {{$product->regular_price}} @endif" name="product_price">
                                         </div>
                                         <button class="add_to_cart_button" type="submit">Add to cart</button>
                                     </form>

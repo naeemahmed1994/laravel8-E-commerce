@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function home(){
-        $sliders= Slider::where('status',1)->get();
+        $sliders= Slider::where('status',1)->orderBy('id','DESC')->get();
         $brands= Brand::where('status',1)->get();
         $categories= Category::where('status',1)->get();
         $products= Product::with('productImage')->where('status',1)->orderBy('id','DESC')->get();
@@ -29,8 +29,8 @@ class TestController extends Controller
         return view('public.product.product',compact('product'));
     }
 
-    public function chart(){
-        return view('public.chart.chart');
+    public function cart(){
+        return view('public.cart.cart');
     }
 
     public function checkout(){

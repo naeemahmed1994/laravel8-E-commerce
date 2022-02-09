@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactController;
@@ -23,10 +24,18 @@ use App\Models\Brand;
 Route::get('/',[TestController::class,'home']);
 Route::get('/shop',[TestController::class,'shop']);
 Route::get('/product/{id}/{name}',[TestController::class,'product']);
-Route::get('/chart',[TestController::class,'chart']);
+Route::get('/cart',[TestController::class,'cart']);
 Route::get('/checkout',[TestController::class,'checkout']);
 Route::get('/brand/{id}',[TestController::class,'brand']);
 Route::get('/category/{id}',[TestController::class,'category']);
+
+//Cart
+
+Route::post('/add-to-cart',[CartController::class,'addToCart']);
+Route::get('/cart',[CartController::class,'showCart']);
+Route::get('/remove-cart/{id}',[CartController::class,'removeCart']);
+Route::post('/update-cart',[CartController::class,'updateCart']);
+
 
 
 //for contact in contactcontroller
