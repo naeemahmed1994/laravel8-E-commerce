@@ -4,15 +4,24 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
+                            @if (Session::get('customerName'))
+                            <!-- <li><a href="#"><i class="fa fa-user"></i>{{Session::get('customerName')}}</a></li> -->
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="{{url('/logout')}}"><i class="fa fa-heart"></i> Logout</a></li>
+                            @else
+                            <li><a href="{{url('/customer-login')}}"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="{{url('/customer-sign-up')}}"><i class="fa fa-user"></i> Sign Up</a></li>
+
+                            @endif
+
                             <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">

@@ -33,9 +33,9 @@ class TestController extends Controller
         return view('public.cart.cart');
     }
 
-    public function checkout(){
-        return view('public.checkout.checkout');
-    }
+    // public function checkout(){
+    //     return view('public.checkout.checkout');
+    // }
 
     public function brand($id){
         $brand = Brand::find($id);

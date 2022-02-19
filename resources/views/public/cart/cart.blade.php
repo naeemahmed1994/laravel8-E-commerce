@@ -90,7 +90,7 @@
                                                     <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
                                                 </div> -->
                                                 <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                                <a type="button" class="checkout-button button alt wc-forward">Checkout</a>
+                                                <a href="{{url('/checkout')}}" class="btn btn-info">Checkout</a>
                                             </td>
                                         </tr>
                                     </tbody>

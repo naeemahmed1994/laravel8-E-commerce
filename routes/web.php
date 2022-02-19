@@ -7,6 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Models\Brand;
 
@@ -25,7 +27,7 @@ Route::get('/',[TestController::class,'home']);
 Route::get('/shop',[TestController::class,'shop']);
 Route::get('/product/{id}/{name}',[TestController::class,'product']);
 Route::get('/cart',[TestController::class,'cart']);
-Route::get('/checkout',[TestController::class,'checkout']);
+//Route::get('/checkout',[TestController::class,'checkout']);
 Route::get('/brand/{id}',[TestController::class,'brand']);
 Route::get('/category/{id}',[TestController::class,'category']);
 
@@ -36,6 +38,21 @@ Route::get('/cart',[CartController::class,'showCart']);
 Route::get('/remove-cart/{id}',[CartController::class,'removeCart']);
 Route::post('/update-cart',[CartController::class,'updateCart']);
 
+//Checkout
+Route::get('/checkout',[CheckoutController::class,'index']);
+
+//sign-up
+Route::get('/customer-sign-up',[CustomerController::class,'signup']);
+Route::post('/customer-sign-up',[CustomerController::class,'signupAction']);
+
+
+//login
+Route::get('/customer-login',[CustomerController::class,'login']);
+Route::post('/customer-login',[CustomerController::class,'loginAction']);
+
+//logout
+
+Route::get('/logout',[CustomerController::class,'logout']);
 
 
 //for contact in contactcontroller
