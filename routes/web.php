@@ -40,6 +40,8 @@ Route::post('/update-cart',[CartController::class,'updateCart']);
 
 //Checkout
 Route::get('/checkout',[CheckoutController::class,'index']);
+Route::post('/order-post',[CheckoutController::class,'orderAction'])->name('order-post');
+Route::get('/order-success',[CheckoutController::class,'orderSuccess']);
 
 //sign-up
 Route::get('/customer-sign-up',[CustomerController::class,'signup']);

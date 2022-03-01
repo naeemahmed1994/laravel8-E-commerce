@@ -16,7 +16,7 @@
                             @endif
 
                             <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
+                            <li><a href="{{url('/checkout')}}"><i class="fa fa-user"></i> Checkout</a></li>
 
                         </ul>
                     </div>
