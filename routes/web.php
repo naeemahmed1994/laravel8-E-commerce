@@ -9,6 +9,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\Brand;
 
@@ -101,4 +102,8 @@ Route::get('/create-products',[ProductController::class,'create']);
 Route::post('/create-products',[ProductController::class,'createAction']);
 Route::get('/product/{id}',[ProductController::class,'detail']);
 
+//order
 
+Route::get('/order-list',[OrderController::class,'index']);
+Route::get('/order-details/{id}',[OrderController::class,'orderDetails']);
+Route::get('/order-status/{id}',[OrderController::class,'orderStatus']);

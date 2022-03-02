@@ -76,6 +76,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('order-list')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Order
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>
